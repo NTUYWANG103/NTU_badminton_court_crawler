@@ -8,7 +8,7 @@ def date_time_court_to_button_value(date, time, court):
 time_to_index_dict = {'10-11' : '3','11-12' : '4','12-13' : '5','13-14' : '6','14-15' : '7','16-17' : '9','17-18' : '10','18-19' : '11','19-20' : '12','20-21' : '13','21-22' : '14'}
 
 # streamlit date
-date = st.date_input("Date", value=datetime.date.today() + datetime.timedelta(days=8), min_value=datetime.date.today(), max_value=datetime.date.today() + datetime.timedelta(days=7))
+date = st.date_input("Date", value=datetime.date.today() + datetime.timedelta(days=8), min_value=datetime.date.today(), max_value=datetime.date.today() + datetime.timedelta(days=8))
 date_str = date.strftime("%d-%b-%Y")
 
 # select time
