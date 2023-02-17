@@ -1,4 +1,4 @@
-from book import NTUBadmintonCourt
+from book import NTUBadmintonCrawler
 import streamlit as st
 import datetime
 
@@ -29,7 +29,7 @@ max_retry = st.sidebar.text_input("Max Retry", value="1000")
 if st.button("Confirm"):
     button_value = date_time_court_to_button_value(date_str, time_str, court)
     st.write(f'button value: {button_value}   Excuting......')
-    badminton = NTUBadmintonCourt(account=account, password=password, headless=headless, chrome_version=chrome_version)
+    badminton = NTUBadmintonCrawler(account=account, password=password, headless=headless, chrome_version=chrome_version)
     badminton.open_badminton_page()
     if badminton.run(button_value=button_value, max_retry=int(max_retry)):
         st.title("Success")

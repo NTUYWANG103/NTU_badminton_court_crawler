@@ -4,7 +4,7 @@ from rich import print
 from stqdm import stqdm
 from func_timeout import func_set_timeout, exceptions
 
-class NTUBadmintonCourt:
+class NTUBadmintonCrawler:
     def __init__(self, account, password, headless=False, chrome_version=109):
         self.driver = uc.Chrome(headless=headless, version_main=chrome_version) # version change to your chrome version
         self.driver.maximize_window()
@@ -30,7 +30,7 @@ class NTUBadmintonCourt:
         # wait for the page to load, if not ready for n seconds, retry  
         try:
             self.wait_string(button_value)
-        except:
+        except exceptions.FunctionTimedOut:
             print(f"Timed out waiting for {button_value} button")
             return False
 
@@ -56,6 +56,6 @@ class NTUBadmintonCourt:
 if __name__=='__main__':
     account = ''
     password = ''
-    badminton = NTUBadmintonCourt(account, password)
+    badminton = NTUBadmintonCrawler(account, password)
     badminton.open_badminton_page()
     badminton.run(button_value='1BB2BB0117-Feb-20233')
